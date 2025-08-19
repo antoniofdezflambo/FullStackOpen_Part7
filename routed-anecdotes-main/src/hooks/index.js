@@ -13,3 +13,13 @@ export const useField = (type) => {
     onChange
   }
 }
+
+export const useResetFields = (fields) => {
+  const resetFields = () => {
+    fields.forEach(field => {
+      field.onChange({ target: { value: '' } })
+    })
+  }
+
+  return resetFields
+}

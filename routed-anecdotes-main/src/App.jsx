@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
-import { useField } from './hooks'
+import { useField, useResetFields } from './hooks'
 
 import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate } from 'react-router-dom'
+import { use } from 'react'
 
 const Menu = () => {
   const padding = {
@@ -68,6 +69,8 @@ const CreateNew = (props) => {
   const author = useField('text')
   const info = useField('text')
 
+  const reset = useResetFields([content, author, info])
+
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
@@ -100,6 +103,7 @@ const CreateNew = (props) => {
           <input {...info} />
         </div>
         <button>create</button>
+        <button type="button" onClick={reset}>reset</button>
       </form>
     </div>
   )
